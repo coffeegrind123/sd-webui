@@ -1,0 +1,4 @@
+[submodule "stable-diffusion-webui-docker"]
+	path = stable-diffusion-webui-docker
+	url = https://github.com/AbdBarho/stable-diffusion-webui-docker
+	branch = master
