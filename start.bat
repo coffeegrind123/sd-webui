@@ -7,10 +7,19 @@ if %errorlevel% neq 0 (
     winget install --id Git.Git -e
 )
 
-cd ".\stable-diffusion-webui-docker\"
-git clone https://github.com/AbdBarho/stable-diffusion-webui-docker .
-git pull
-xcopy /s /e /y "..\replace\stable-diffusion-webui-docker" "."
+set "directory=.\stable-diffusion-webui-docker"
+
+if exist "%directory%" (
+    echo Directory exists. Pulling from the repository.
+    cd "%directory%"
+    git pull
+) else (
+    echo Directory does not exist. Cloning from the repository.
+    git clone https://github.com/AbdBarho/stable-diffusion-webui-docker "%directory%"
+    cd "%directory%"
+)
+
+xcopy /s /e /y "..\replace\stable-diffusion-webui-docker" ".\"
 
 REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
 docker compose --profile download up --build
