@@ -11,7 +11,7 @@ cd ".\stable-diffusion-webui-docker\"
 git clone https://github.com/AbdBarho/stable-diffusion-webui-docker .
 git pull
 cd ".."
-xcopy /s /e /y ".\data" ".\stable-diffusion-webui-docker\data\"
+xcopy /s /e /y "..\data" ".\data\"
 
 REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
 docker compose --profile download up --build
