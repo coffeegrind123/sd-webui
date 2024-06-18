@@ -11,6 +11,7 @@ REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
 git pull
 git submodule update --recursive --remote
 xcopy /s /e /y ".\data" ".\stable-diffusion-webui-docker\data\"
+cd ".\stable-diffusion-webui-docker\"
 docker compose --profile download up --build
 REM wait until its done, then:
 REM docker compose --profile [ui] up --build
