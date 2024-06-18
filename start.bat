@@ -12,11 +12,13 @@ git add .
 git remote add origin https://github.com/coffeegrind123/sd-webui.git
 git remote update
 git checkout main
+
+cd ".\stable-diffusion-webui-docker\"
 git pull
 git submodule update --recursive --remote
 
+cd ".."
 xcopy /s /e /y ".\data" ".\stable-diffusion-webui-docker\data\"
-cd ".\stable-diffusion-webui-docker\"
 
 REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
 docker compose --profile download up --build
