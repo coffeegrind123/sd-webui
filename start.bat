@@ -7,9 +7,9 @@ if %errorlevel% neq 0 (
     winget install --id Git.Git -e
 )
 
-git clone https://github.com/coffeegrind123/sd-webui.git .
 cd ".\stable-diffusion-webui-docker\"
-git submodule update --init --recursive
+git clone https://github.com/AbdBarho/stable-diffusion-webui-docker .
+git pull
 cd ".."
 xcopy /s /e /y ".\data" ".\stable-diffusion-webui-docker\data\"
 
