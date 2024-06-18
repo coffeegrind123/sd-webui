@@ -1,0 +1,4 @@
+services:
+   auto:
+     environment:
+       - CLI_ARGS=--listen --port 7861 --xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test --api
