@@ -11,7 +11,7 @@ git init
 git add .
 git remote add origin https://github.com/coffeegrind123/sd-webui.git
 git remote update
-git checkout master
+git checkout main
 git pull
 git submodule update --recursive --remote
 
