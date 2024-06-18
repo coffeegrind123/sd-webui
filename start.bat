@@ -14,9 +14,10 @@ git remote update
 git checkout main
 git submodule update --recursive --remote
 
-xcopy /s /e /y ".\data" ".\stable-diffusion-webui-docker\data\"
-
 cd ".\stable-diffusion-webui-docker\"
+git pull
+cd ".."
+xcopy /s /e /y ".\data" ".\stable-diffusion-webui-docker\data\"
 
 REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
 docker compose --profile download up --build
