@@ -1,8 +1,8 @@
-x-base_service: &base_service
-    ports:
-      - "7860:7861"
+version: '3.7'
 
 services:
-   auto:
-     environment:
-       - CLI_ARGS=--xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test --api
+  auto:
+    ports:
+      - "7811:7860"  # Change the port assignment for the auto service to 7811
+    environment:
+      - CLI_ARGS=--xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test --api
