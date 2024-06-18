@@ -1,8 +1,14 @@
-version: '3.7'
-
 services:
   auto:
-    ports:
+    ports: !override
       - "7811:7860"  # Change the port assignment for the auto service to 7811
+    deploy:
+      resources:
+        reservations:
+          devices:
+              - driver: nvidia
+                count: all
+                capabilities:
+                    - gpu
     environment:
       - CLI_ARGS=--xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test --api
