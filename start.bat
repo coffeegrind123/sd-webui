@@ -8,6 +8,8 @@ if %errorlevel% neq 0 (
 )
 
 REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
+git init
+git remote add origin https://github.com/coffeegrind123/sd-webui.git
 git pull
 git submodule update --recursive --remote
 xcopy /s /e /y ".\data" ".\stable-diffusion-webui-docker\data\"
