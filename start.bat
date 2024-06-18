@@ -10,7 +10,6 @@ if %errorlevel% neq 0 (
 cd ".\stable-diffusion-webui-docker\"
 git clone https://github.com/AbdBarho/stable-diffusion-webui-docker .
 git pull
-cd ".."
 xcopy /s /e /y "..\data" ".\data\"
 
 REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
