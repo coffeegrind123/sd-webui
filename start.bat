@@ -21,9 +21,16 @@ if exist "%directory%" (
 
 xcopy /s /e /y "..\replace\stable-diffusion-webui-docker" ".\"
 
-REM https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup
-docker compose --profile download up --build
-docker compose --profile auto up
+REM Check if it's the first run
+if not exist first_run.txt (
+    echo First run detected. Running download and auto profiles.
+    docker compose --profile download up --build
+    docker compose --profile auto up --build
+    echo First run completed.>first_run.txt
+) else (
+    echo Subsequent run detected. Running auto profile only.
+    docker compose --profile auto up
+)
 
 REM Close the command prompt after the script finishes
 pause
