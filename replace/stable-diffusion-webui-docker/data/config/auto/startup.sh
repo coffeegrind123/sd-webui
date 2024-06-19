@@ -5,7 +5,6 @@ cd ./extensions
 
 # Array of GitHub repository URLs
 repositories=(
-    "https://github.com/kohya-ss/sd-webui-additional-networks.git"
     "https://github.com/Mikubill/sd-webui-controlnet.git"
     "https://github.com/huchenlei/sd-webui-openpose-editor.git"
     "https://github.com/wywywywy/sd-webui-depth-lib.git"
@@ -23,6 +22,9 @@ repositories=(
     "https://github.com/hako-mikan/sd-webui-negpip.git"
     "https://github.com/hako-mikan/sd-webui-regional-prompter.git"
     "https://github.com/kousw/stable-diffusion-webui-daam.git"
+    "https://github.com/Astropulse/sd-palettize.git"
+    "https://github.com/hako-mikan/sd-webui-lora-block-weight.git"
+    "https://github.com/AUTOMATIC1111/stable-diffusion-webui-pixelization.git"
 )
 
 # Function to clone repositories if directories don't exist
@@ -44,6 +46,6 @@ clone_repositories() {
 clone_repositories
 
 # Install Python package
-# /opt/conda/bin/python -m pip install 'insightface'
+/opt/conda/bin/python -m pip install 'insightface'
 
 # exit 0
