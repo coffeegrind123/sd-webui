@@ -58,11 +58,11 @@ else
     echo "File alias_net.pth already exists. Skipping clone."
 fi
 
-cd ../../models
+cd /data/models
 
 # Check if the file control_v11p_sd15_openpose_fp16.safetensors exists in the models directory and get models for controlnet
 if [ ! -f "ControlNet/control_v11p_sd15_openpose_fp16.safetensors" ]; then
-    rm -r "ControlNet"
+    #rm -r "ControlNet"
     if ! git clone https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors.git ControlNet; then
         echo "Failed to clone"
         exit 1
