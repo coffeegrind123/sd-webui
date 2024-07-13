@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt update && apt install -y git-lfs
+
 # Change directory to the extensions folder
 cd ./extensions
 
