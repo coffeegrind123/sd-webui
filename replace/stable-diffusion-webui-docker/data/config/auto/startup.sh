@@ -48,4 +48,7 @@ clone_repositories
 # Install Python package
 /opt/conda/bin/python -m pip install 'insightface'
 
+# Get models for pixelization
+git clone https://huggingface.co/ashleykleynhans/pixelization.git stable-diffusion-webui-pixelization/checkpoints
+
 # exit 0
