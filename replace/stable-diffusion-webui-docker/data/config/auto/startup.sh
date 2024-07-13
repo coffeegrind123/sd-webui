@@ -14,7 +14,6 @@ repositories=(
     "https://github.com/catppuccin/stable-diffusion-webui.git"
     "https://github.com/AUTOMATIC1111/stable-diffusion-webui-rembg.git"
     "https://github.com/ashen-sensored/stable-diffusion-webui-two-shot.git"
-    "https://github.com/xhoxye/sd-webui-ar_xhox.git"
     "https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git"
     "https://github.com/mix1009/model-keyword"
     "https://github.com/adieyal/sd-dynamic-prompts.git"
