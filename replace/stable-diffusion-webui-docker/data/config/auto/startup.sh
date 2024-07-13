@@ -26,6 +26,7 @@ repositories=(
     "https://github.com/Astropulse/sd-palettize.git"
     "https://github.com/hako-mikan/sd-webui-lora-block-weight.git"
     "https://github.com/AUTOMATIC1111/stable-diffusion-webui-pixelization.git"
+    "https://github.com/Bing-su/adetailer.git"
 )
 
 # Function to clone repositories if directories don't exist
