@@ -48,8 +48,15 @@ clone_repositories
 # Install Python package
 /opt/conda/bin/python -m pip install 'insightface'
 
-# Get models for pixelization
-rm -rf stable-diffusion-webui-pixelization/checkpoints
-git clone https://huggingface.co/ashleykleynhans/pixelization.git stable-diffusion-webui-pixelization/checkpoints
+# Check if the file alias_net.pth exists in the checkpoints directory and get models for pixelization
+if [ ! -f "stable-diffusion-webui-pixelization/checkpoints/alias_net.pth" ]; then
+    rm -r "stable-diffusion-webui-pixelization/checkpoints"
+    if ! git clone https://huggingface.co/ashleykleynhans/pixelization.git stable-diffusion-webui-pixelization/checkpoints; then
+        echo "Failed to clone"
+        exit 1
+    fi
+else
+    echo "File alias_net.pth already exists. Skipping clone."
+fi
 
 # exit 0
