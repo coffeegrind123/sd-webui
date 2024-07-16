@@ -74,4 +74,8 @@ else
     echo "File control_v11p_sd15_openpose_fp16.safetensors already exists. Skipping clone."
 fi
 
+# Install Python package
+/opt/conda/bin/python -m pip install 'text2tags-lib'
+mv -f /data/config/auto/api.py /stable-diffusion-webui/modules/api/
+
 # exit 0
