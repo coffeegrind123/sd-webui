@@ -440,11 +440,17 @@ class Api:
 
         selectable_scripts, selectable_script_idx = self.get_selectable_script(txt2imgreq.script_name, script_runner)
 
+        tags_positive = "masterpiece, best quality, absurdres, "
+        tags_negative = "nsfw, lowres, bad anatomy, bad hands, (bad), text, error, cropped, fewer, extra, missing, worst quality, low quality, normal quality, jpeg artifacts, unfinished, displeasing, oldest, early, chromatic aberration, signature, watermark, username, blurry, extra digits, artistic error, scan, [abstract]"
+
         # Modify the prompt here
         if hasattr(txt2imgreq, 'prompt'):
             original_prompt = txt2imgreq.prompt
             modified_prompt = self.modify_prompt(original_prompt) + " BREAK\n" + original_prompt
-            txt2imgreq = txt2imgreq.copy(update={"prompt": modified_prompt.replace('Mona Lisa', '')})
+            txt2imgreq = txt2imgreq.copy(update={"prompt": tags_positive + modified_prompt.replace('Mona Lisa', '')})
+
+        if hasattr(txt2imgreq, 'negative_prompt'):
+            txt2imgreq = txt2imgreq.copy(update={"negative_prompt": tags_negative})
 
         # Check for "Regional Prompter" in alwayson_scripts and add it if not present
         if not hasattr(txt2imgreq, 'alwayson_scripts') or 'alwayson_scripts' not in txt2imgreq.__dict__:
