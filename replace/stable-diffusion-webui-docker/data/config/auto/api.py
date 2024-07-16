@@ -440,14 +440,18 @@ class Api:
 
         selectable_scripts, selectable_script_idx = self.get_selectable_script(txt2imgreq.script_name, script_runner)
 
-        tags_positive = "masterpiece, best quality, absurdres, "
-        tags_negative = "nsfw, lowres, bad anatomy, bad hands, (bad), text, error, cropped, fewer, extra, missing, worst quality, low quality, normal quality, jpeg artifacts, unfinished, displeasing, oldest, early, chromatic aberration, signature, watermark, username, blurry, extra digits, artistic error, scan, [abstract]"
+        tags_positive = "(masterpiece), best quality, absurdres, highres, (zaphn:0.7|machismo fuji:1.2|ginhaha:0.8), "
+        tags_negative = "lowres, worst quality, low quality, jpeg artifacts, blurry, bad anatomy, watermark, signature, username, patreon logo, patreon username, speech bubble, text, english_text, heart, extra hands"
+
+        bad_tags = "heart, comic, english_text"
 
         # Modify the prompt here
         if hasattr(txt2imgreq, 'prompt'):
             original_prompt = txt2imgreq.prompt
-            modified_prompt = self.modify_prompt(original_prompt) + " BREAK\n" + original_prompt
-            txt2imgreq = txt2imgreq.copy(update={"prompt": tags_positive + modified_prompt.replace('Mona Lisa', '')})
+            modified_prompt = self.modify_prompt(original_prompt)
+            for tag in bad_tags.split(', '):  # Split the tags_negative string into a list
+                modified_prompt = modified_prompt.replace(tag, '')
+            txt2imgreq = txt2imgreq.copy(update={"prompt": tags_positive + modified_prompt.replace('Mona Lisa', '') + " BREAK\n" + original_prompt})
 
         if hasattr(txt2imgreq, 'negative_prompt'):
             txt2imgreq = txt2imgreq.copy(update={"negative_prompt": tags_negative})
