@@ -443,8 +443,21 @@ class Api:
         # Modify the prompt here
         if hasattr(txt2imgreq, 'prompt'):
             original_prompt = txt2imgreq.prompt
-            modified_prompt = self.modify_prompt(original_prompt)  # Implement this method as needed
-            txt2imgreq = txt2imgreq.copy(update={"prompt": modified_prompt})
+            modified_prompt = self.modify_prompt(original_prompt) + " BREAK\n" + original_prompt
+            txt2imgreq = txt2imgreq.copy(update={"prompt": modified_prompt.replace('Mona Lisa', '')})
+
+        # Check for "Regional Prompter" in alwayson_scripts and add it if not present
+        if not hasattr(txt2imgreq, 'alwayson_scripts') or 'alwayson_scripts' not in txt2imgreq.__dict__:
+            txt2imgreq.alwayson_scripts = {}
+
+        if 'Regional Prompter' not in txt2imgreq.alwayson_scripts:
+            txt2imgreq.alwayson_scripts['Regional Prompter'] = {
+                "args": [
+                    {
+                        "active": True
+                    }
+                ]
+            }
 
         populate = txt2imgreq.copy(update={  # Override __init__ params
             "sampler_name": validate_sampler_name(txt2imgreq.sampler_name or txt2imgreq.sampler_index),
