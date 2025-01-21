@@ -15,7 +15,7 @@ if exist "%directory%" (
     git pull
 ) else (
     echo Directory does not exist. Cloning from the repository.
-    git clone https://github.com/AbdBarho/stable-diffusion-webui-docker "%directory%"
+    git clone https://github.com/simonmcnair/stable-diffusion-webui-docker "%directory%"
     cd "%directory%"
 )
 
