@@ -75,7 +75,7 @@ else
 fi
 
 # Install Python package
-/opt/conda/bin/python -m pip install 'text2tags-lib'
-mv -f /data/config/auto/api.py /stable-diffusion-webui/modules/api/
+#/opt/conda/bin/python -m pip install 'text2tags-lib'
+#mv -f /data/config/auto/api.py /stable-diffusion-webui/modules/api/
 
 # exit 0
